@@ -1,0 +1,11 @@
+com\mes\beerordermicroservice\domain\BeerOrder$BeerOrderBuilder.class
+com\mes\beerordermicroservice\domain\BaseEntity.class
+com\mes\beerordermicroservice\web\controllers\BeerOrderController.class
+com\mes\beerordermicroservice\domain\Customer.class
+com\mes\beerordermicroservice\domain\BeerOrderLine.class
+com\mes\beerordermicroservice\domain\BeerOrder.class
+com\mes\beerordermicroservice\domain\BeerOrderLine$BeerOrderLineBuilder.class
+com\mes\beerordermicroservice\BeerOrderMicroServiceApplication.class
+com\mes\beerordermicroservice\domain\Customer$CustomerBuilder.class
+com\mes\beerordermicroservice\domain\OrderStatusEnum.class
+com\mes\beerordermicroservice\web\controllers\model\BaseItem.class
