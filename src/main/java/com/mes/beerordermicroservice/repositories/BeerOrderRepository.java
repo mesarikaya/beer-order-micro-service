@@ -4,11 +4,11 @@ import com.mes.beerordermicroservice.domain.BeerOrder;
 import com.mes.beerordermicroservice.domain.Customer;
 import com.mes.beerordermicroservice.domain.OrderStatusEnum;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Lock;
 
 import javax.persistence.LockModeType;
-import java.awt.print.Pageable;
 import java.util.List;
 import java.util.UUID;
 
