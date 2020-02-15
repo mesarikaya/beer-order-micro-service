@@ -17,8 +17,8 @@ import java.util.UUID;
 public class BeerOrderLineDto extends BaseItem {
 
     @Builder
-    public BeerOrderLineDto(UUID id, Integer version, OffsetDateTime createdDate, OffsetDateTime lastModifiedDate,
-                            String upc, String beerName, UUID beerId, Integer orderQuantity) {
+    public BeerOrderLineDto(UUID id, int version, OffsetDateTime createdDate, OffsetDateTime lastModifiedDate,
+                            String upc, String beerName, UUID beerId, int orderQuantity) {
         super(id, version, createdDate, lastModifiedDate);
         this.upc = upc;
         this.beerName = beerName;

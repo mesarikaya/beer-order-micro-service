@@ -22,6 +22,6 @@ public interface BeerOrderRepository extends JpaRepository<BeerOrder, UUID> {
     List<BeerOrder> findAllByOrderStatus(OrderStatusEnum orderStatusEnum);
 
     @Lock(LockModeType.PESSIMISTIC_WRITE)
-    BeerOrder findByOneId(UUID id);
+    BeerOrder findOneById(UUID id);
 
 }
