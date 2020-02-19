@@ -58,14 +58,18 @@ public class BeerOrderServiceImpl implements BeerOrderService {
     @Override
     public BeerOrderDto placeOrder(UUID customerId, BeerOrderDto beerOrderDto) {
         Optional<Customer> customerOptional = customerRepository.findById(customerId);
-
+        log.debug("Found customer is: " + customerOptional );
         if (customerOptional.isPresent()) {
+            log.debug("Found customer is: " + customerOptional.get() );
             BeerOrder beerOrder = beerOrderMapper.dtoToBeerOrder(beerOrderDto);
             beerOrder.setId(null); //should not be set by outside client
             beerOrder.setCustomer(customerOptional.get());
             beerOrder.setOrderStatus(OrderStatusEnum.NEW);
 
-            beerOrder.getBeerOrderLines().forEach(line -> line.setBeerOrder(beerOrder));
+            beerOrder.getBeerOrderLines().forEach(line -> {
+                log.debug("Adding order lines: " + line.toString() + " upc: " + line.getUpc());
+                line.setBeerOrder(beerOrder);
+            });
 
             BeerOrder savedBeerOrder = beerOrderRepository.saveAndFlush(beerOrder);
 

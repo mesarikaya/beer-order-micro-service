@@ -54,12 +54,13 @@ public class TastingRoomService {
 
     private void doPlaceOrder(Customer customer) {
         String beerToOrder = getRandomBeerUpc();
-        log.info("Customer is the scheduled task is: " + customer.toString());
+        log.info("Customer is the scheduled task is: " + customer.toString() + "with upc: " + beerToOrder);
         BeerOrderLineDto beerOrderLine = BeerOrderLineDto.builder()
                 .upc(beerToOrder)
                 .orderQuantity(new Random().nextInt(6)) //todo externalize value to property
                 .build();
 
+        log.debug("Created order line: " + beerOrderLine.toString());
         List<BeerOrderLineDto> beerOrderLineSet = new ArrayList<>();
         beerOrderLineSet.add(beerOrderLine);
 
@@ -69,6 +70,7 @@ public class TastingRoomService {
                 .beerOrderLines(beerOrderLineSet)
                 .build();
 
+        log.debug("Created beer order: " + beerOrder.toString());
         BeerOrderDto savedOrder = beerOrderService.placeOrder(customer.getId(), beerOrder);
 
     }

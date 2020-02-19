@@ -25,6 +25,7 @@ public class BeerOrderLine extends BaseEntity{
     private UUID beerId;
     private int orderQuantity = 0;
     private int quantityAllocated = 0;
+    private long upc;
 
     @Builder
     public BeerOrderLine(UUID id, Long version, Timestamp createdDate, Timestamp lastModifiedDate,

@@ -37,6 +37,7 @@ public class BaseEntity {
     private Long version;
 
     @CreationTimestamp
+    @Column(updatable = false)
     private Timestamp createdDate;
 
     @UpdateTimestamp
