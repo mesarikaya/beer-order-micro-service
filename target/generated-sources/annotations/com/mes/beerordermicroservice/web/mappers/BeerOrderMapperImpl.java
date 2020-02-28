@@ -1,10 +1,11 @@
 package com.mes.beerordermicroservice.web.mappers;
 
+import brewery.model.BeerOrderDto;
+import brewery.model.BeerOrderLineDto;
 import com.mes.beerordermicroservice.domain.BeerOrder;
 import com.mes.beerordermicroservice.domain.BeerOrderLine;
+import com.mes.beerordermicroservice.domain.BeerOrderStatusEnum;
 import com.mes.beerordermicroservice.domain.Customer;
-import com.mes.beerordermicroservice.web.domain.BeerOrderDto;
-import com.mes.beerordermicroservice.web.domain.BeerOrderLineDto;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-02-19T23:30:43+0100",
+    date = "2020-02-28T14:21:51+0100",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 11.0.2 (AdoptOpenJDK)"
 )
 @Component
@@ -44,7 +45,9 @@ public class BeerOrderMapperImpl implements BeerOrderMapper {
         beerOrderDto.setLastModifiedDate( dateMapper.asOffsetDateTime( beerOrder.getLastModifiedDate() ) );
         beerOrderDto.setCustomerRef( beerOrder.getCustomerRef() );
         beerOrderDto.setBeerOrderLines( beerOrderLineSetToBeerOrderLineDtoList( beerOrder.getBeerOrderLines() ) );
-        beerOrderDto.setOrderStatus( beerOrder.getOrderStatus() );
+        if ( beerOrder.getOrderStatus() != null ) {
+            beerOrderDto.setOrderStatus( beerOrder.getOrderStatus().name() );
+        }
         beerOrderDto.setOrderStatusCallbackUrl( beerOrder.getOrderStatusCallbackUrl() );
 
         return beerOrderDto;
@@ -64,7 +67,9 @@ public class BeerOrderMapperImpl implements BeerOrderMapper {
         beerOrder.setLastModifiedDate( dateMapper.asTimestamp( dto.getLastModifiedDate() ) );
         beerOrder.setCustomerRef( dto.getCustomerRef() );
         beerOrder.setBeerOrderLines( beerOrderLineDtoListToBeerOrderLineSet( dto.getBeerOrderLines() ) );
-        beerOrder.setOrderStatus( dto.getOrderStatus() );
+        if ( dto.getOrderStatus() != null ) {
+            beerOrder.setOrderStatus( Enum.valueOf( BeerOrderStatusEnum.class, dto.getOrderStatus() ) );
+        }
         beerOrder.setOrderStatusCallbackUrl( dto.getOrderStatusCallbackUrl() );
 
         return beerOrder;

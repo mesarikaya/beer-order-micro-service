@@ -1,0 +1,10 @@
+package com.mes.beerordermicroservice.domain;
+
+/**
+ * Created by mesar on 2/14/2020
+ */
+public enum BeerOrderStatusEnum {
+    NEW, VALIDATED,  VALIDATED_PENDING, VALIDATION_EXCEPTION,
+    ALLOCATION_PENDING, ALLOCATED, ALLOCATION_EXCEPTION,
+    PENDING_INVENTORY, PICKED_UP, DELIVERED, DELIVERY_EXCEPTION
+}

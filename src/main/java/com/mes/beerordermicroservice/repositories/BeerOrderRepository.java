@@ -2,7 +2,7 @@ package com.mes.beerordermicroservice.repositories;
 
 import com.mes.beerordermicroservice.domain.BeerOrder;
 import com.mes.beerordermicroservice.domain.Customer;
-import com.mes.beerordermicroservice.domain.OrderStatusEnum;
+import com.mes.beerordermicroservice.domain.BeerOrderStatusEnum;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,7 +19,7 @@ public interface BeerOrderRepository extends JpaRepository<BeerOrder, UUID> {
 
     Page<BeerOrder> findAllByCustomer(Customer customer, Pageable pageable);
 
-    List<BeerOrder> findAllByOrderStatus(OrderStatusEnum orderStatusEnum);
+    List<BeerOrder> findAllByOrderStatus(BeerOrderStatusEnum orderStatusEnum);
 
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     BeerOrder findOneById(UUID id);

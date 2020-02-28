@@ -3,7 +3,7 @@ package com.mes.beerordermicroservice.web.mappers;
 import com.mes.beerordermicroservice.domain.BeerOrderLine;
 import com.mes.beerordermicroservice.services.beer.BeerService;
 import com.mes.beerordermicroservice.web.domain.BeerDto;
-import com.mes.beerordermicroservice.web.domain.BeerOrderLineDto;
+import brewery.model.BeerOrderLineDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

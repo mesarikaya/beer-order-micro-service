@@ -1,7 +1,7 @@
 package com.mes.beerordermicroservice.services;
 
-import com.mes.beerordermicroservice.web.domain.BeerOrderDto;
-import com.mes.beerordermicroservice.web.domain.BeerOrderPagedList;
+import brewery.model.BeerOrderDto;
+import brewery.model.BeerOrderPagedList;
 import org.springframework.data.domain.Pageable;
 
 import java.util.UUID;

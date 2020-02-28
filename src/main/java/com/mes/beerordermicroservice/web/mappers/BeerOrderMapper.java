@@ -1,7 +1,7 @@
 package com.mes.beerordermicroservice.web.mappers;
 
 import com.mes.beerordermicroservice.domain.BeerOrder;
-import com.mes.beerordermicroservice.web.domain.BeerOrderDto;
+import brewery.model.BeerOrderDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

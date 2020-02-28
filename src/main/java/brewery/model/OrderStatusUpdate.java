@@ -1,5 +1,6 @@
-package com.mes.beerordermicroservice.web.domain;
+package brewery.model;
 
+import com.mes.beerordermicroservice.web.domain.BaseItem;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

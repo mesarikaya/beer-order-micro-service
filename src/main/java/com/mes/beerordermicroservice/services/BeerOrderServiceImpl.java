@@ -2,11 +2,11 @@ package com.mes.beerordermicroservice.services;
 
 import com.mes.beerordermicroservice.domain.BeerOrder;
 import com.mes.beerordermicroservice.domain.Customer;
-import com.mes.beerordermicroservice.domain.OrderStatusEnum;
+import com.mes.beerordermicroservice.domain.BeerOrderStatusEnum;
 import com.mes.beerordermicroservice.repositories.BeerOrderRepository;
 import com.mes.beerordermicroservice.repositories.CustomerRepository;
-import com.mes.beerordermicroservice.web.domain.BeerOrderDto;
-import com.mes.beerordermicroservice.web.domain.BeerOrderPagedList;
+import brewery.model.BeerOrderDto;
+import brewery.model.BeerOrderPagedList;
 import com.mes.beerordermicroservice.web.mappers.BeerOrderMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -64,7 +64,7 @@ public class BeerOrderServiceImpl implements BeerOrderService {
             BeerOrder beerOrder = beerOrderMapper.dtoToBeerOrder(beerOrderDto);
             beerOrder.setId(null); //should not be set by outside client
             beerOrder.setCustomer(customerOptional.get());
-            beerOrder.setOrderStatus(OrderStatusEnum.NEW);
+            beerOrder.setOrderStatus(BeerOrderStatusEnum.NEW);
 
             beerOrder.getBeerOrderLines().forEach(line -> {
                 log.debug("Adding order lines: " + line.toString() + " upc: " + line.getUpc());
@@ -75,7 +75,7 @@ public class BeerOrderServiceImpl implements BeerOrderService {
 
             log.info("Saved Beer Order: " + savedBeerOrder.getId());
 
-            //todo impl
+            // todo impl
             //  publisher.publishEvent(new NewBeerOrderEvent(savedBeerOrder));
 
             return beerOrderMapper.beerOrderToDto(savedBeerOrder);
@@ -92,7 +92,7 @@ public class BeerOrderServiceImpl implements BeerOrderService {
     @Override
     public void pickupOrder(UUID customerId, UUID orderId) {
         BeerOrder beerOrder = getOrder(customerId, orderId);
-        beerOrder.setOrderStatus(OrderStatusEnum.PICKED_UP);
+        beerOrder.setOrderStatus(BeerOrderStatusEnum.PICKED_UP);
 
         beerOrderRepository.save(beerOrder);
     }
